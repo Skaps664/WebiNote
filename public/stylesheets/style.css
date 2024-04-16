@@ -1,8 +1,13 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root{
+    --background-color: #ffc500;
+    --bs-primary-rgb: #12296c;
 }
 
-a {
-  color: #00B7FF;
+body{
+    background-color: var(--background-color);
+    background-image: url(../images/noise-bg.png);
+} 
+
+.container-fluid-custom{
+     max-width: 1600px;
 }
