@@ -14,6 +14,7 @@ exports.homePage = async function (req, res) {
   res.render("homePage", {
     title: locals.title,
     description: locals.description,
+    layout: "../views/layouts/front-page",
   });
 };
 
