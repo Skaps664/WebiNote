@@ -1,42 +1,39 @@
-:root{
-    --background-color: #ffc500;
-    --bs-primary-rgb: #12296c;
+:root {
+  --background-color: #ffc500;
+  --bs-primary-rgb: #12296c;
+  --background-image: url(../images/noise-bg.png);
 }
 
-body{
-    font-family: Gilroy-Regular;
-    background-color: var(--background-color);
-    background-image: url(../images/noise-bg.png);
-} 
-
-.container-fluid-custom{
-     max-width:1600px;
+body {
+  font-family: Gilroy-Regular;
+  /* background-color: var(--background-color); */
+  background-image: var(--background-image)
 }
 
-
-
+.container-fluid-custom {
+  max-width: 1600px;
+}
 
 /* Home */
 @media (min-width: 1200px) {
-    .home {
-      background: 
-        url('../images/human-1.svg') left bottom no-repeat,
-        url('../images/human-2.svg') right bottom no-repeat,
-        url('../images/human-3.svg') left top repeat,
-      ;
-    }
+  .home {
+    background: url("../images/human-1.svg") left bottom no-repeat,
+      url("../images/human-2.svg") right bottom no-repeat,
+      var(--background-image);
+    ;
   }
+}
 
-  .home-title::before {
-    content: url('../images/stars.svg');
-    position: absolute;
-    left: -50px;
-    top: -30px;
-  }
-  
-  .home-title::after {
-    content: url('../images/stars.svg');
-    position: absolute;
-    right: -50px;
-    bottom: -30px;
-  }
+.home-title::before {
+  content: url("../images/stars.svg");
+  position: absolute;
+  left: -50px;
+  top: -30px;
+}
+
+.home-title::after {
+  content: url("../images/stars.svg");
+  position: absolute;
+  right: -50px;
+  bottom: -30px;
+}
