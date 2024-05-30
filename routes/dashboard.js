@@ -1,9 +1,8 @@
 var express = require("express");
 var router = express.Router();
-const mainController = require("../controller/main_controller.js");
+const dashboard_controller = require("../controller/dashboard_controller.js");
 
-/* GET home page. */
-
-router.get("/dashboard", mainController.about);
+/* GET users listing. */
+router.get("/", dashboard_controller.test);
 
 module.exports = router;
