@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const passport = require("passport");
+const User_model = require("../models/Users_model");
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
@@ -19,7 +20,7 @@ passport.use(
 
 // Google Login Route
 router.get(
-  "/auth/google",
+  "/google",
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
@@ -27,14 +28,27 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/login-failure",
-    successRedirect: "/dashboard",
+    failureRedirect: "/auth/login-failure",
+    successRedirect: "/dashboard/index",
   })
 );
 
 // Route if something goes wrong
 router.get("/login-failure", (req, res) => {
   res.send("Something went wrong...");
+});
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err, null);
+  }
 });
 
 module.exports = router;

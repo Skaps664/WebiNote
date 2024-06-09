@@ -14,7 +14,7 @@ var authRouter = require("./routes/auth");
 const connectDB = require("./config/db");
 const passport = require("passport");
 const express_session = require("express-session");
-const mongo_connect = require("connect-mongo");
+const mongoStore = require("connect-mongo");
 
 var app = express();
 
@@ -24,9 +24,14 @@ app.set("view engine", "ejs");
 
 app.use(
   express_session({
+    secret: "keyboard cat",
     resave: false,
-    saveUninitialized: false,
-    secret: "thisisasecret",
+    saveUninitialized: true,
+    store: mongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
+    //cookie: { maxAge: new Date ( Date.now() + (3600000) ) }
+    // Date.now() - 30 * 24 * 60 * 60 * 1000
   })
 );
 
